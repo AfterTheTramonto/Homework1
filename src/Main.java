@@ -1,103 +1,69 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Задание №1");
-        byte malo = 100;
-        System.out.println("Значение переменной malo, с типом Byte равно " + malo);
-        short sredne = 10000;
-        System.out.println("Значение переменной sredne, с типом Short равно " + sredne);
-        int dostatochno = 100000;
-        System.out.println("Значение переменной dostatochno, с типом int равно " + dostatochno);
-        long mnogo = 3000000000L;
-        System.out.println("Значение переменной mnogo, с типом long равно " + mnogo);
-        float drobiMalo = 3.123456F;
-        System.out.println("Значение переменной drobiMalo, с типом Float равно " + drobiMalo);
-        double drobiMnogo = 3.123456789;
-        System.out.println("Значение переменной drobiMnogo, с типом Double равно " + drobiMnogo);
-        System.out.println("Задание №2");
-        float a = 27.12F;
-        System.out.println("Float A равен " + a);
-        long b = 987678965549L;
-        System.out.println("Long B равен " + b);
-        float c = 2.786F;
-        System.out.println("Float C равен " + c);
-        short d = 569;
-        System.out.println("Short D равен " + d);
-        short e = -159;
-        System.out.println("Short E равен " + e);
-        int f = 27897;
-        System.out.println("Int F равен " + f);
-        byte g = 67;
-        System.out.println("Byte G равен " + g);
-        System.out.println("Задание №3");
-        int classPavlovnoy = 23;
-        int classSergeevnoy = 27;
-        int classAndreevnoy = 30;
-        int allPaper = 480;
-        int paperForOnePupil = allPaper / (classPavlovnoy + classSergeevnoy + classAndreevnoy);
-        System.out.println("На каждого ученика рассчитано " + paperForOnePupil + " листов бумаги");
-        System.out.println("Задание №4");
-        int secondsMinutes = 60;
-        int secondsHour = secondsMinutes * 60;
-        int productionDuration = 120;
-        int interval20 = (secondsMinutes * 20) / productionDuration;
-        System.out.println("За 20 минут машина произвела " + interval20 + " штук бутылок");
-        int intervalDay = (secondsHour * 24) / productionDuration;
-        System.out.println("За сутки машина произвела " + intervalDay + " штук бутылок");
-        int intervalDay3 = intervalDay * 3;
-        System.out.println("За трое суток машина произвела " + intervalDay3 + " штук бутылок");
-        int intervalMonth = intervalDay * 30;
-        System.out.println("За месяц машина произвела " + intervalMonth + " штук бутылок");
-        System.out.println("Задание №5");
-        int paintCans = 120;
-        int whitePaint = 2;
-        int brownPaint = 4;
-        int classPaint = whitePaint + brownPaint;
-        int classCount = paintCans / classPaint;
-        int whitePurchased = whitePaint * classCount;
-        int brownPurchased = brownPaint * classCount;
-        System.out.println("В школе, где " + classCount + " классов, нужно " + whitePurchased + " банок белой краски и " + brownPurchased + " банок коричневой краски");
-        System.out.println("Задание №6");
-        int kilo = 1000;
-        int bananGrams = 80;
-        int bananCount = 5;
-        int bananRecipe = bananCount * bananGrams;
-        int milkGrams = 105;
-        int milkCount = 2;
-        int milkRecipe = milkCount * milkGrams;
-        int iceGrams = 100;
-        int iceCount = 2;
-        int iceRecipe = iceCount * iceGrams;
-        int eggGrams = 70;
-        int eggCount = 4;
-        int eggRecipe = eggCount * eggGrams;
-        float recipeGrams = eggRecipe + bananRecipe + iceRecipe + milkRecipe;
-        float recipeKilos = recipeGrams / kilo;
-        System.out.println("Вес завтрака в граммах будет " + recipeGrams + "гр. Вес в килограммах будет " + recipeKilos + "кг.");
-        System.out.println("Задание №7");
-        int targetWeight = 7000;
-        int loseWeight1 = 250;
-        int loseWeight2 = 500;
-        int planLose1 = targetWeight / loseWeight1;
-        int planLose2 = targetWeight / loseWeight2;
-        int averageDay = (planLose1 + planLose2) / 2;
-        System.out.println("Если спортсмен будет тратить по 250гр. в день, ему потребуется " + planLose1 + " дней для похудения. Если по 500гр., то потребуется " + planLose2 + " дней.  В среднем дней нужно " + averageDay);
-        System.out.println("Задание №8");
-        float payMasha = 67760f;
-        float payDenis = 83690f;
-        float payCristina = 76230f;
-        float payInc = 100 / 10f;
-        float incMasha = payMasha / payInc;
-        float incDenis = payDenis / payInc;
-        float incCristina = payCristina / payInc;
-        float yearIncMasha = incMasha * 12f;
-        float yearIncDenis = incDenis * 12;
-        float yearIncCristina = incCristina * 12;
-        float currentPayMasha = payMasha + incMasha;
-        System.out.println("Маша теперь получает " + currentPayMasha + " руб. Годовой доход вырос на " + yearIncMasha + " руб.");
-        float currentPayDenis = payDenis + incDenis;
-        System.out.println("Денис теперь получает " + currentPayDenis + " руб. Годовой доход вырос на " + yearIncDenis + " руб.");
-        float currentPayCristina = payCristina + incCristina;
-        System.out.println("Кристина теперь получает " + currentPayCristina + " руб. Годовой доход вырос на " + yearIncCristina + " руб.");
+        //Задание 1
+        int age = 11;
+        if (age >= 18) {
+            System.out.println("Если возраст человека равен " + age + " он совершеннолетний");
+        } else {
+            System.out.println("Если возраст человека равен " + age + " он не достиг совершеннолетия, нужно немного подождать");
+        }
+        //Задание 2
+        int temp = 24;
+        if (temp >= 5) {
+            System.out.println("Сегодня тепло, можно идти без шапки");
+        } else {
+            System.out.println("На улице холодно, нужно надеть шапку");
+        }
+        //Задание 3
+        int speed = 147;
+        if (speed >= 60) {
+            System.out.println("Если скорость " + speed + " км/ч то придётся заплатить штраф");
+        } else {
+            System.out.println("Если скорость " + speed + " км/ч то можно ездить спокойно");
+        }
+        //Задание 4
+        int age1 = 18;
+        if (age1 >= 2 && age1 <= 6) {
+            System.out.println("Если возраст человека равен " + age1 + " то ему нужно ходить в детский сад");
+        }
+        if (age1 >= 7 && age1 <= 17) {
+            System.out.println("Если возраст человека равен " + age1 + " то ему нужно ходить в школу");
+        }
+        if (age1 >= 18 && age1 <= 24) {
+            System.out.println("Если возраст человека равен " + age1 + " то ему нужно ходить в университет");
+        }
+        if (age1 >= 24) {
+            System.out.println("Если возраст человека равен " + age1 + " то ему нужно ходить на работу");
+        }
+        //Задание 5
+        int ageChild=18;
+        if (ageChild<5) {
+            System.out.println("Если возраст ребенка равен " + ageChild + " то ему нельзя кататься на атракционе");}
+        if (ageChild>=5 && ageChild<14) {
+            System.out.println("Если возраст ребенка равен " + ageChild + " то ему можно кататься в сопровождении взрослого");}
+        if (ageChild>=14) {
+            System.out.println("Если возраст ребенка равен " + ageChild + " то ему можно кататься без сопровождения взрослого");}
+        //Задание 6
+        int capacity = 102;
+        int seatingCapacity = 60;
+        int standingCapacity=42;
+        int passengers=102;
+        if (passengers<=seatingCapacity){
+            System.out.println("Есть сидячие места");} else if (passengers>=seatingCapacity && passengers<capacity) {
+            System.out.println("Есть стоячие места");} else {
+            System.out.println("Мест нет");
+
+        }
+        //Задание 7
+        int one = 23;
+        int two = 96;
+        int three= 10;
+        if (one>two && one>three){
+            System.out.println(one+" большее число");} else if (two>three) {
+            System.out.println(two+" большее число");} else {
+            System.out.println(three+" большее число");
+
+        }
 
     }
 }
