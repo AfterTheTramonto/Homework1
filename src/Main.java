@@ -8,7 +8,6 @@ public class Main {
         while (total <= 2_459_000) {
             total = total + cash;
             System.out.println("Месяц " + y++ + " сумма накоплений равна " + total + " рублей");
-            System.out.println("Для накопления " + total + " потребуется " + y + " месяцев");
         }
         //Задание 2
         System.out.println();
@@ -38,7 +37,7 @@ public class Main {
         System.out.println("Задание 4");
         int savings = 0;
         int income = 15000;
-        int month = 1;
+        int month = 0;
         while (savings < 12_000_000) {
             savings = savings + income;
             savings = savings + (savings / 100) * 7;
@@ -78,8 +77,8 @@ public class Main {
         }
         //Задание 7
         System.out.println("Задание 7");
-        for (int dayNumber = 1; dayNumber <= 31; dayNumber++) {
-            if (dayNumber % 5 == 0) {
+        for (int dayNumber = 7; dayNumber <= 31; dayNumber++) {
+            if (dayNumber % 7 == 0) {
                 System.out.println("Сегодня пятница, " + dayNumber + "е число. Необходимо подготовить отчет");
             }
         }
