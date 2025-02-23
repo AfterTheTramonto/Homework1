@@ -1,96 +1,64 @@
+import java.util.Arrays;
+import java.util.Collections;
+
 public class Main {
     public static void main(String[] args) {
         //Задание 1
         System.out.println("Задание 1");
-        int cash = 15000;
-        int total = 0;
-        int y = 1;
-        while (total <= 2_459_000) {
-            total = total + cash;
-            System.out.println("Месяц " + y++ + " сумма накоплений равна " + total + " рублей");
-        }
-        //Задание 2
-        System.out.println();
+//Первый массив
+        int[] first = new int[3];
+        first[0] = 1;
+        first[1] = 2;
+        first[2] = 3;
+//Второй массив
+        double[] second = {1.57, 7.654, 9.986};
+//Третий массив
+        int[] colorOfCats = new int[3];
+        colorOfCats[0] = 3;
+        int ginger = colorOfCats[0];
+        colorOfCats[1] = 2;
+        int white = colorOfCats[1];
+        colorOfCats[2] = 6;
+        int black = colorOfCats[2];
+//Задание 2
         System.out.println("Задание 2");
-        int w = 0;
-        while (w < 10) {
-            w++;
-            System.out.print(" " + w);
-        }
-        System.out.println();
-        for (int e = 10; e >= 1; e--) {
-            System.out.print(" " + e);
-        }
-        System.out.println();
-        //Задание 3
-        System.out.println();
+        System.out.println(Arrays.toString(first));
+        System.out.println(Arrays.toString(second));
+        System.out.println(Arrays.toString(colorOfCats));
+//Задание 3
         System.out.println("Задание 3");
-        int population = 12_000_000;
-        int born = 17;
-        int died = 8;
-        for (int t = 1; t <= 10; t++) {
-            population += population * born / 1000 - population * died / 1000;
-            System.out.println("Год " + t + " численность населения составляет " + population + " человек");
-        }
-        //Задание 4
-        System.out.println();
-        System.out.println("Задание 4");
-        int savings = 0;
-        int income = 15000;
-        int month = 0;
-        while (savings < 12_000_000) {
-            savings = savings + income;
-            savings = savings + (savings / 100) * 7;
-            month++;
-            System.out.println("Месяц " + month + " Сумма накоплений " + savings);
-        }
-        //Задание 5
-        System.out.println();
-        System.out.println("Задание 5");
-        month = 1;
-        savings = 0;
-        income = 15000;
-        while (savings < 12_000_000) {
-            savings = savings + income;
-            savings = savings + (savings / 100) * 7;
-            month++;
-            if (month % 6 == 0) {
-                System.out.println("Месяц " + month + " Сумма накоплений " + savings);
+        for (int i = first.length - 1; i >= 0; i--) {
+            System.out.print(first[i]);
+            if (i > 0) {
+                System.out.print(", ");
             }
         }
-        //Задание 6
         System.out.println();
-        System.out.println("Задание 6");
-        int year = 9;
-        int monthInYear = 12;
-        int monthTotal = year * monthInYear;
-        month = 1;
-        savings = 0;
-        income = 15000;
-        while (month <= monthTotal) {
-            month++;
-            savings = savings + income;
-            savings = savings + (savings / 100) * 7;
-            if (month % 6 == 0) {
-                System.out.println("Месяц " + month + " Сумма накоплений " + savings);
-            }
-        }
-        //Задание 7
-        System.out.println("Задание 7");
-        for (int dayNumber = 7; dayNumber <= 31; dayNumber++) {
-            if (dayNumber % 7 == 0) {
-                System.out.println("Сегодня пятница, " + dayNumber + "е число. Необходимо подготовить отчет");
-            }
-        }
-        //Задание 8
-        System.out.println("Задание 8");
-        year = 2025;
-        int yearBefore = 2024 - 200;
-        int yearAfter = 2024 + 100;
 
-        for (year = yearBefore; year < yearAfter; year++) {
-            if (year % 79 == 0) {
-                System.out.println(year);
+        for (int i = second.length - 1; i >= 0; i--) {
+            System.out.print(second[i]);
+            if (i > 0) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+
+        for (int i = colorOfCats.length - 1; i >= 0; i--) {
+            System.out.print(colorOfCats[i]);
+            if (i > 0) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+
+        //Задание 4
+        System.out.println("Задание 4");
+        int[] finals = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+        for (int i = 0; i < finals.length; i++) {
+
+            if (finals[i] % 2 == 1) {
+                finals[i] = finals[i] + 1;
+                System.out.println(finals[i]);
             }
         }
     }
