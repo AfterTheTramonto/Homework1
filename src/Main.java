@@ -5,7 +5,7 @@ public class Main {
 //Первый массив
         int[] first = new int[5];
         first[0] = 100;
-        first[1] = 150;
+        first[1] = 50;
         first[2] = 200;
         first[3] = 300;
         first[4] = 700;
@@ -22,7 +22,7 @@ public class Main {
                 maxExpenses = expenses;
             }
             if (expenses < minExpenses) {
-                minExpenses = maxExpenses;
+                minExpenses =expenses ;
             }
         }
         System.out.println("Минимальная сумма трат за неделю составила "+ minExpenses+" рублей");
@@ -32,8 +32,18 @@ public class Main {
         System.out.println(arithmeticMean);
 //Задание 4
         char[] reverseFullName = { 'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
-        for (int i = reverseFullName.length - 1; i >= 0; i--) {
-            System.out.print(reverseFullName[i]);}
+        for (int i = 0; i < reverseFullName.length; i++) {
+        }
+        for (int i = 0; i < reverseFullName.length / 2; i++) {
+            char temp = reverseFullName[i];
+            reverseFullName[i] = reverseFullName[reverseFullName.length - 1 - i];
+            reverseFullName[reverseFullName.length - 1 - i] = temp;
+        }
+        for (int i = 0; i <reverseFullName.length; i++) {
+            System.out.print(reverseFullName[i] + " ");
+        }
+
+
     }
 }
 
