@@ -1,50 +1,50 @@
+import java.time.LocalDate;
+
 public class Main {
+    public static void yearCount(int a) {
+        if (a < 1584 || a % 4 == 0 && a % 100 != 0 || a % 400 == 0) {
+            System.out.println(a + " год - високосный");
+        } else {
+            System.out.println(a + " год - не високосный год");
+        }
+    }
+
+
+    public static void getLink(int a, int b) {
+        if (a == 0 && b < 2015) {
+            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
+        } else if (a == 0) {
+            System.out.println("Установите версию приложения для iOS по ссылке");
+        } else if (a == 1 && b < 2015) {
+            System.out.println("Установите облегченную версию приложения для Android по ссылке");
+        } else {
+            System.out.println("Установите версию приложения для Android по ссылке");
+        }
+    }
+    public static void calculationDelivery(int q, int e){
+        if (q < 20) {
+            e = 1;
+            System.out.println("Потребуется день " + e);
+        } else if (q > 20 && q < 60) {
+           e += 1;
+            System.out.println("Потребуется дней " + e);
+        } else if (q >= 60 && q <= 100) {
+            e += 2;
+            System.out.println("Потребуется дней " + e);
+        } else {
+            System.out.println("Доставки нет");}
+    }
+
     public static void main(String[] args) {
         //Задание 1
-        System.out.println("Задание 1");
-//Первый массив
-        int[] first = new int[5];
-        first[0] = 100;
-        first[1] = 50;
-        first[2] = 200;
-        first[3] = 300;
-        first[4] = 700;
-        int sum = 0;
-        for (int expenses : first) {
-            sum += expenses;
-        }
-        System.out.println("Сумма трат за месяц составила " + sum + " рублей");
-        //Задание 2
-        int maxExpenses = 0;
-        int minExpenses = 2147483647;
-        for (int expenses : first) {
-            if (expenses > maxExpenses) {
-                maxExpenses = expenses;
-            }
-            if (expenses < minExpenses) {
-                minExpenses = expenses;
-            }
-        }
-        System.out.println("Минимальная сумма трат за неделю составила " + minExpenses + " рублей");
-        System.out.println("Максимальная сумма трат за неделю составила " + maxExpenses + " рублей");
+        int currentYear = LocalDate.now().getYear();
+        yearCount(currentYear);
+//Задание 2
+        int deviseOS = 1;
+        getLink(deviseOS, currentYear);
         //Задание 3
-        int arithmeticMean = sum / 5;
-        System.out.println(arithmeticMean);
-//Задание 4
-        char[] reverseFullName = {'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
-        for (int i = 0; i < reverseFullName.length; i++) {
-        }
-        for (int i = 0; i < reverseFullName.length / 2; i++) {
-            char temp = reverseFullName[i];
-            reverseFullName[i] = reverseFullName[reverseFullName.length - 1 - i];
-            reverseFullName[reverseFullName.length - 1 - i] = temp;
-        }
-        for (int i = 0; i < reverseFullName.length; i++) {
-            System.out.print(reverseFullName[i] + " ");
-        }
-
-
+        int deliveryDistance = 100;
+        int deliveryDay = 1;
+        calculationDelivery(deliveryDistance,deliveryDay);
     }
 }
-
-
