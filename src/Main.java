@@ -1,50 +1,64 @@
-public class Main {
-    public static void main(String[] args) {
-        //Задание 1
-        System.out.println("Задание 1");
-//Первый массив
-        int[] first = new int[5];
-        first[0] = 100;
-        first[1] = 50;
-        first[2] = 200;
-        first[3] = 300;
-        first[4] = 700;
-        int sum = 0;
-        for (int expenses : first) {
-            sum += expenses;
-        }
-        System.out.println("Сумма трат за месяц составила " + sum + " рублей");
-        //Задание 2
-        int maxExpenses = 0;
-        int minExpenses = 2147483647;
-        for (int expenses : first) {
-            if (expenses > maxExpenses) {
-                maxExpenses = expenses;
-            }
-            if (expenses < minExpenses) {
-                minExpenses = expenses;
-            }
-        }
-        System.out.println("Минимальная сумма трат за неделю составила " + minExpenses + " рублей");
-        System.out.println("Максимальная сумма трат за неделю составила " + maxExpenses + " рублей");
-        //Задание 3
-        int arithmeticMean = sum / 5;
-        System.out.println(arithmeticMean);
-//Задание 4
-        char[] reverseFullName = {'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
-        for (int i = 0; i < reverseFullName.length; i++) {
-        }
-        for (int i = 0; i < reverseFullName.length / 2; i++) {
-            char temp = reverseFullName[i];
-            reverseFullName[i] = reverseFullName[reverseFullName.length - 1 - i];
-            reverseFullName[reverseFullName.length - 1 - i] = temp;
-        }
-        for (int i = 0; i < reverseFullName.length; i++) {
-            System.out.print(reverseFullName[i] + " ");
-        }
+import java.time.LocalDate;
 
+public class Main {
+    public static void searchLeapYear(int year) {
+        if (year > 1584 || year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            System.out.println(year + " год - високосный");
+        } else {
+            System.out.println(year + " год - не високосный год");
+        }
+    }
+
+
+    public static void showingWhatVersion(int deviseOS, int currentYear) {
+        if (deviseOS == 0 && currentYear < 2015) {
+            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
+        } else if (deviseOS == 0) {
+            System.out.println("Установите версию приложения для iOS по ссылке");
+        } else if (deviseOS == 1 && currentYear < 2015) {
+            System.out.println("Установите облегченную версию приложения для Android по ссылке");
+        } else {
+            System.out.println("Установите версию приложения для Android по ссылке");
+        }
+    }
+
+    public static int countingDeliveryDays(int distance, int days) {
+        if (distance < 20) {
+            days = 1;
+            return 1;
+        } else if (distance > 20 && distance < 60) {
+            days += 1;
+            return 2;
+        } else if (distance >= 60 && distance <= 100) {
+            days += 2;
+            return 3;
+        } else {
+            throw new RuntimeException("Нет доставки");
+        }
+    }
+
+    public static void printingDelivery(int daysReturn) {
+        if (daysReturn == 1) {
+            System.out.println("Потребуется дней: " + daysReturn);
+        } else if (daysReturn == 2) {
+            System.out.println("Потребуется дней: " + daysReturn);
+        } else if (daysReturn == 3) {
+            System.out.println("Потребуется дней: " + daysReturn);
+        }
 
     }
+
+
+    public static void main(String[] args) {
+        //Задание 1
+        int currentYear = LocalDate.now().getYear();
+        searchLeapYear(currentYear);
+        //Задание 2
+        int deviseOS = 1;
+        showingWhatVersion(deviseOS, currentYear);
+        //Задание 3
+        int deliveryDistance = 100;
+        int deliveryDay = 1;
+        printingDelivery(countingDeliveryDays(deliveryDistance, deliveryDay));
+    }
 }
-
-
