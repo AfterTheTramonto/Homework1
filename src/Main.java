@@ -1,50 +1,91 @@
+import java.util.Locale;
+
 public class Main {
+    private static Employee[] employees = new Employee[10];
+
     public static void main(String[] args) {
-        //Задание 1
-        System.out.println("Задание 1");
-//Первый массив
-        int[] first = new int[5];
-        first[0] = 100;
-        first[1] = 50;
-        first[2] = 200;
-        first[3] = 300;
-        first[4] = 700;
-        int sum = 0;
-        for (int expenses : first) {
-            sum += expenses;
-        }
-        System.out.println("Сумма трат за месяц составила " + sum + " рублей");
-        //Задание 2
-        int maxExpenses = 0;
-        int minExpenses = 2147483647;
-        for (int expenses : first) {
-            if (expenses > maxExpenses) {
-                maxExpenses = expenses;
-            }
-            if (expenses < minExpenses) {
-                minExpenses = expenses;
-            }
-        }
-        System.out.println("Минимальная сумма трат за неделю составила " + minExpenses + " рублей");
-        System.out.println("Максимальная сумма трат за неделю составила " + maxExpenses + " рублей");
-        //Задание 3
-        int arithmeticMean = sum / 5;
-        System.out.println(arithmeticMean);
-//Задание 4
-        char[] reverseFullName = {'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
-        for (int i = 0; i < reverseFullName.length; i++) {
-        }
-        for (int i = 0; i < reverseFullName.length / 2; i++) {
-            char temp = reverseFullName[i];
-            reverseFullName[i] = reverseFullName[reverseFullName.length - 1 - i];
-            reverseFullName[reverseFullName.length - 1 - i] = temp;
-        }
-        for (int i = 0; i < reverseFullName.length; i++) {
-            System.out.print(reverseFullName[i] + " ");
-        }
+
+        employees[0] = new Employee("Иванов Николай Николаевич", 1, 50000);
+        employees[1] = new Employee("Петров Александр Андреевич", 2, 60000);
+        employees[2] = new Employee("Сидоров Анатолий Иванович", 3, 55000);
+        employees[3] = new Employee("Кузнецова Анна Владимировна", 4, 70000);
+        employees[4] = new Employee("Смирнов Алексей Дмитриевич", 5, 45000);
+        employees[5] = new Employee("Васильева Екатерина Сергеевна", 1, 80000);
+        employees[6] = new Employee("Николаев Николай Николаевич", 2, 75000);
+        employees[7] = new Employee("Алексеева Ольга Ивановна", 3, 65000);
+        employees[8] = new Employee("Дмитриев Дмитрий Дмитриевич", 4, 90000);
+        employees[9] = new Employee("Федорова Мария Александровна", 5, 40000);
 
 
+        printAllEmployees();
+
+
+        System.out.println("Сумма затрат на зарплаты: " + calculateTotalSalary());
+
+
+        Employee minSalaryEmployee = findEmployeeWithMinSalary();
+        System.out.println("Сотрудник с минимальной зарплатой: " + minSalaryEmployee);
+
+
+        Employee maxSalaryEmployee = findEmployeeWithMaxSalary();
+        System.out.println("Сотрудник с максимальной зарплатой: " + maxSalaryEmployee);
+
+        System.out.println("Средняя зарплата: " + calculateAverageSalary());
+
+        printAllEmployeeNames();
+    }
+
+    public static void printAllEmployees() {
+        for (Employee employee : employees) {
+            if (employee != null) {
+                System.out.println(employee);
+            }
+        }
+    }
+
+    public static double calculateTotalSalary() {
+        double total = 0;
+        for (Employee employee : employees) {
+            if (employee != null) {
+                total += employee.getSalary();
+            }
+        }
+        return total;
+    }
+
+    public static Employee findEmployeeWithMinSalary() {
+        Employee minSalaryEmployee = null;
+        double minSalary = Double.MAX_VALUE;
+        for (Employee employee : employees) {
+            if (employee != null && employee.getSalary() < minSalary) {
+                minSalary = employee.getSalary();
+                minSalaryEmployee = employee;
+            }
+        }
+        return minSalaryEmployee;
+    }
+
+    public static Employee findEmployeeWithMaxSalary() {
+        Employee maxSalaryEmployee = null;
+        double maxSalary = Double.MIN_VALUE;
+        for (Employee employee : employees) {
+            if (employee != null && employee.getSalary() > maxSalary) {
+                maxSalary = employee.getSalary();
+                maxSalaryEmployee = employee;
+            }
+        }
+        return maxSalaryEmployee;
+    }
+
+    public static double calculateAverageSalary() {
+        return calculateTotalSalary() / employees.length;
+    }
+
+    public static void printAllEmployeeNames() {
+        for (Employee employee : employees) {
+            if (employee != null) {
+                System.out.println(employee.getFullName());
+            }
+        }
     }
 }
-
-
