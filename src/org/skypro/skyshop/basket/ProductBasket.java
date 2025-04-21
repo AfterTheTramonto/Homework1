@@ -4,40 +4,40 @@ import org.skypro.skyshop.product.Product;
 
 public class ProductBasket {
     private Product[] products = new Product[5];
+    private int count = 0;
 
     public void addProduct(Product product) {
-        for (int i = 0; i < products.length; i++) {
-            if (products[i] == null) {
-                products[i] = product;
-                return;
-            }
+        if (count < products.length) {
+            products[count++] = product;
+        } else {
+            System.out.println("Невозможно добавить продукт");
         }
-        System.out.println("Невозможно добавить продукт");
     }
 
     public int getTotalCost() {
         int total = 0;
-        for (Product product : products) {
-            if (product != null) {
-                total += product.getPrice();
-            }
+        for (int i = 0; i < count; i++) {
+            total += products[i].getPrice();
         }
         return total;
     }
 
     public void printContents() {
-        boolean isEmpty = true;
-        for (Product product : products) {
-            if (product != null) {
-                System.out.printf("%s: %d%n", product.getName(), product.getPrice());
-                isEmpty = false;
+        if (count == 0) {
+            System.out.println("в корзине пусто");
+            return;
+        }
+
+        int specialCount = 0;
+        for (int i = 0; i < count; i++) {
+            Product product = products[i];
+            System.out.println(product);
+            if (product.isSpecial()) {
+                specialCount++;
             }
         }
-        if (isEmpty) {
-            System.out.println("в корзине пусто");
-        } else {
-            System.out.printf("Итого: %d%n", getTotalCost());
-        }
+        System.out.printf("Итого: %d%n", getTotalCost());
+        System.out.printf("Специальных товаров: %d%n", specialCount);
     }
 
     public boolean containsProduct(String name) {
