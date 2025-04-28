@@ -1,37 +1,39 @@
 package org.skypro.skyshop;
 
-
-import org.skypro.skyshop.basket.ProductBasket;
+import org.skypro.skyshop.content.Article;
 import org.skypro.skyshop.product.*;
+import org.skypro.skyshop.search.SearchEngine;
+import org.skypro.skyshop.search.Searchable;
 
 public class App {
     public static void main(String[] args) {
-        ProductBasket basket = new ProductBasket();
+
+        SearchEngine engine = new SearchEngine(10);
 
 
-        Product simple = new SimpleProduct("Молоко", 80);
-        Product discounted = new DiscountedProduct("Телевизор", 50000, 15);
-        Product fixed = new FixPriceProduct("Секретный товар");
-
-        basket.addProduct(simple);
-        basket.addProduct(discounted);
-        basket.addProduct(fixed);
+        engine.add(new SimpleProduct("Ноутбук Lenovo", 45000));
+        engine.add(new DiscountedProduct("Смартфон Samsung", 30000, 15));
+        engine.add(new FixPriceProduct("Чехол для смартфона"));
 
 
-        for (int i = 0; i < 3; i++) {
-            basket.addProduct(new SimpleProduct("Товар " + (i + 1), 100));
-        }
-
-        System.out.println("Содержимое корзины:");
-        basket.printContents();
+        engine.add(new Article("Обзор ноутбуков", "Лучшие ноутбуки 2023 года "));
+        engine.add(new Article("Как выбрать смартфон", "Руководство по выбору..."));
 
 
-        System.out.println("Общая стоимость: " + basket.getTotalCost());
-        System.out.println("Специальных товаров: " + countSpecials(basket));
+        System.out.println("Результаты поиска по 'ноут':");
+        printResults(engine.search("ноутбук"));
+
+        System.out.println("\nРезультаты поиска по 'телефон':");
+        printResults(engine.search("смартфон"));
     }
 
-    private static int countSpecials(ProductBasket basket) {
-
-        return 2;
+    private static void printResults(Searchable[] results) {
+        for (Searchable s : results) {
+            if (s == null) continue;
+            System.out.printf("[%s] %s: %s%n",
+                    s.getContentType(),
+                    s.getName(),
+                    s.getSearchTerm().substring(0, Math.min(20, s.getSearchTerm().length())) + "...");
+        }
     }
 }
