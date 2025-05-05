@@ -1,42 +1,42 @@
 package org.skypro.skyshop;
 
+import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.content.Article;
 import org.skypro.skyshop.product.*;
 import org.skypro.skyshop.search.BestResultNotFound;
 import org.skypro.skyshop.search.SearchEngine;
 import org.skypro.skyshop.search.Searchable;
 
+import java.util.List;
+
 public class App {
     public static void main(String[] args) {
-        // Создание с ошибками
-        try {
-            new SimpleProduct("  ", 100);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Ошибка: " + e.getMessage());
-        }
+        ProductBasket basket = new ProductBasket();
 
-        try {
-            new DiscountedProduct("Телефон", -100, 10);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Ошибка: " + e.getMessage());
-        }
 
-        // Поиск лучшего результата
-        SearchEngine engine = new SearchEngine(10);
-        engine.add(new Article("Ноутбуки 2023", "Лучшие модели ноутбуков..."));
-        engine.add(new SimpleProduct("Игровой ноутбук", 100000));
+        Product apple = new SimpleProduct("Яблоко", 50);
+        Product apple2 = new SimpleProduct("Яблоко", 50);
+        basket.addProduct(apple);
+        basket.addProduct(apple2);
+        basket.addProduct(new SimpleProduct("Банан", 30));
 
-        try {
-            Searchable best = engine.findBestMatch("ноут");
-            System.out.println("Лучший результат: " + best.getName());
-        } catch (BestResultNotFound e) {
-            System.out.println(e.getMessage());
-        }
 
-        try {
-            engine.findBestMatch("смартфон");
-        } catch (BestResultNotFound e) {
-            System.out.println("Ошибка поиска: " + e.getMessage());
-        }
+        System.out.println("Удаляем яблоки:");
+        List<Product> removed = basket.removeProductsByName("Яблоко");
+        removed.forEach(p -> System.out.println(p.getName()));
+
+        System.out.println("\nКорзина после удаления:");
+        basket.printContents();
+
+        List<Product> empty = basket.removeProductsByName("Апельсин");
+        System.out.println("\nУдалено апельсинов: " + empty.size());
+
+        SearchEngine engine = new SearchEngine();
+        engine.add(apple);
+        engine.add(new Article("Фрукты", "Яблоки и бананы..."));
+
+        System.out.println("\nРезультаты поиска 'яблоко':");
+        List<Searchable> results = engine.search("яблоко");
+        results.forEach(s -> System.out.println(s.getName()));
     }
 }
