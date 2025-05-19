@@ -2,41 +2,42 @@ package org.skypro.skyshop;
 
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.content.Article;
-import org.skypro.skyshop.product.*;
-import org.skypro.skyshop.search.BestResultNotFound;
-import org.skypro.skyshop.search.SearchEngine;
+import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.SimpleProduct;
 import org.skypro.skyshop.search.Searchable;
+import org.skypro.skyshop.search.SearchEngine;
 
 import java.util.List;
+import java.util.TreeMap;
 
 public class App {
     public static void main(String[] args) {
         ProductBasket basket = new ProductBasket();
 
 
-        Product apple = new SimpleProduct("Яблоко", 50);
+        Product apple1 = new SimpleProduct("Яблоко", 50);
         Product apple2 = new SimpleProduct("Яблоко", 50);
-        basket.addProduct(apple);
+        Product banana = new SimpleProduct("Банан", 30);
+
+        basket.addProduct(apple1);
         basket.addProduct(apple2);
-        basket.addProduct(new SimpleProduct("Банан", 30));
+        basket.addProduct(banana);
 
 
-        System.out.println("Удаляем яблоки:");
         List<Product> removed = basket.removeProductsByName("Яблоко");
-        removed.forEach(p -> System.out.println(p.getName()));
+        System.out.println("Удалено яблок: " + removed.size());
 
-        System.out.println("\nКорзина после удаления:");
-        basket.printContents();
-
-        List<Product> empty = basket.removeProductsByName("Апельсин");
-        System.out.println("\nУдалено апельсинов: " + empty.size());
 
         SearchEngine engine = new SearchEngine();
-        engine.add(apple);
-        engine.add(new Article("Фрукты", "Яблоки и бананы..."));
+        engine.add(new SimpleProduct("Ноутбук", 100000));
+        engine.add(new Article("Обзор", "Лучшие ноутбуки 2023"));
+        engine.add(new SimpleProduct("Ананас", 150));
 
-        System.out.println("\nРезультаты поиска 'яблоко':");
-        List<Searchable> results = engine.search("яблоко");
-        results.forEach(s -> System.out.println(s.getName()));
+
+        TreeMap<String, Searchable> results = engine.search("нут");
+        System.out.println("\nРезультаты поиска:");
+        results.forEach((name, item) ->
+                System.out.printf("%s (%s)%n", name, item.getContentType())
+        );
     }
 }
